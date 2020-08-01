@@ -1,2 +1,5 @@
-.idea
+.idea/
+.vscode/
 project/logs
+
+go.sum
