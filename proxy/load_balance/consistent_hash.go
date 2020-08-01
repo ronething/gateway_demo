@@ -81,6 +81,7 @@ func (c *ConsistentHashBanlance) Get(key string) (string, error) {
 	}
 	hash := c.hash([]byte(key))
 
+	// 一个环，数据 hash 照着顺时针找到第一个服务器 hash
 	// 通过二分查找获取最优节点，第一个"服务器hash"值大于"数据hash"值的就是最优"服务器节点"
 	idx := sort.Search(len(c.keys), func(i int) bool { return c.keys[i] >= hash })
 
@@ -115,4 +116,3 @@ func (c *ConsistentHashBanlance) Update() {
 		}
 	}
 }
-
